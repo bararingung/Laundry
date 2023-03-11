@@ -18,6 +18,7 @@
     <input type="text" name="password" id="password" class="form-control" placeholder="your password" required mt-3 bcrypt value="{{ $Userdata->password }}"><br>
     <label for="role">Role :</label>
     <select name="role" id="" class="form-control">
+        <option value="">--Chose Role--</option>
         <option value="1" @if ($Userdata->role == 1)
             selected
         @endif>Admin</option>

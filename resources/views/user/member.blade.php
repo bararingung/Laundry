@@ -45,10 +45,9 @@
                 <h6 class="mt-3 font-weight-bold text-primary p-2 flex-grow-1">Members Data</h6>
                 <div class="p-2"></div>
                 <div class="p-2">
-                <form action="/Registrasi" method="GET" class="d-flex flex-row-reverse d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                <form action="{{ route('Registrasi.index') }}" method="GET" class="d-flex flex-row-reverse d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
-                    <input type="text" class="form-control bg-body border-0 small" placeholder="Search for..."
-                        aria-label="Search" aria-describedby="basic-addon2">
+                    <input type="text" name="search" class="form-control bg-body border-0 small" placeholder="Search for..." value="{{ request('search') }}" aria-label="Search" aria-describedby="basic-addon2">
                     <div class="input-group-append">
                         <button class="btn btn-primary" type="submit">
                             <i class="fas fa-search fa-sm"></i>
@@ -106,11 +105,17 @@
                 </div>
             </div>
         </div>
-
+        <div class="d-flex justify-content-end">
+        {{ $member->links() }}
+    </div>
     </div>
     <!-- /.container-fluid -->
 
 </div>
+{{-- @else
+<p class="text-center fs-4">Data Not Found!</p>
+@endif --}}
+
 @include('sweetalert::alert')
 <!-- End of Main Content -->
 

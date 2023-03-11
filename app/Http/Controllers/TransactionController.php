@@ -7,11 +7,20 @@ use App\Models\Outlet;
 use Illuminate\Http\Request;
 use App\Models\packet;
 use App\Models\transaksi;
+use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller
 {
-    public function index(){
-        $transaksi = transaksi::with(['outlet','member','packets'])->get();
+    public function index(Request $request){
+
+        if ($keyword = $request->get('search')) {
+            $transaksi = transaksi::where('tgl', 'LIKE', "%$keyword%")
+            ->orWhere('batas_waktu', 'LIKE', "%$keyword%")
+            ->orWhere('tgl_bayar', 'LIKE', "%$keyword%")
+            ->get();
+        }else {
+            $transaksi = transaksi::with(['outlet','member','packets'])->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
+        }
         return view('transaksi.Transaction', compact('transaksi'));
     }
 
@@ -38,7 +47,7 @@ class TransactionController extends Controller
 
         $transaksi->jumlah_harga = $biayaTambahan - $hargadiskon + $hargapajak;
         $transaksi->save();
-        return redirect('Transaction');
+        return redirect('Transaction')->with('success', 'Transaction Successfully changed!');;
     }
 
     public function edit($id){
@@ -63,13 +72,14 @@ class TransactionController extends Controller
           $transaksi->jumlah_harga = $biayaTambahan - $hargadiskon + $hargapajak;
           $transaksi->save();
 
-          return redirect('Transaction');
+          return redirect('Transaction')->with('success', 'Transaction Successfully changed!');;
     }
 
     public function destroy($id){
         $transaksi = transaksi::find($id);
         $transaksi->delete();
 
-        return redirect('Transaction');
+        // return redirect('Transaction');
+        return response()->json(['status' => 'Transaction Successfully deleted!']);
     }
 }

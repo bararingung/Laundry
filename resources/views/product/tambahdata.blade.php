@@ -8,7 +8,7 @@
     <form action="{{ route('outlet.store') }}" method="POST">
         @csrf
     <label for="nama" class="mb-3">Name :</label><br>
-    <input type="text" name="nama" id="nama" placeholder="your name" autofocus required class="form-control"><br>
+    <input type="text" name="nama" id="nama" placeholder="Outlet name" autofocus required class="form-control"><br>
     <label for="tlp"></label>Telephone :<br>
     <input type="text" name="tlp" id="tlp" placeholder="08xxx" autofocus required class="form-control mt-3"><br>
     <label for="alamat" class="mb-3"></label>Addres :<br>

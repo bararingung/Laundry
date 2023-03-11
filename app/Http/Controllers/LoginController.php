@@ -33,11 +33,11 @@ class LoginController extends Controller
         // $request->session()->regenerate();
             $user = Auth::user();
             if($user = Auth::user()){
-                if($user->role == '1'){
+                if($user->role == 'admin'){
                     return redirect()->intended('beranda');
-                }elseif($user->role == '2'){
+                }elseif($user->role == 'cashier'){
                     return redirect()->intended('kasir');
-                }elseif($user->role == '3'){
+                }elseif($user->role == 'owner'){
                     return redirect()->intended('owner');
                 }
             }

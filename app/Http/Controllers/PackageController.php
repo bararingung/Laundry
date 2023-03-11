@@ -10,8 +10,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class PackageController extends Controller
 {
-    public function index(){
-        $produk = packet::with('outlet')->get();
+    public function index(Request $request){
+        if ($keyword = $request->get('search')) {
+            $produk = packet::where('jenis', 'LIKE', "%$keyword%")
+            ->orWhere('nama_paket', 'LIKE', "%$keyword%")
+            ->orWhere('harga', 'LIKE', "%$keyword%")
+            ->get();
+        }else {
+            $produk = packet::with('outlet')->orderBy('created_at', 'desc')->paginate(5)->withQueryString();
+        }
         return view('product.Package', compact('produk'));
     }
 
@@ -22,7 +29,7 @@ class PackageController extends Controller
 
     public function store(Request $request){
         $packet = packet::create($request->except(['_token', 'submit']));
-        return redirect('Package')->with('success', 'Data berhasil ditambahkan!');
+        return redirect('Package')->with('success', 'Package Successfully added!');
 
     }
 
@@ -35,13 +42,14 @@ class PackageController extends Controller
     public function update(Request $request, $id){
         $packet = packet::find($id);
         $packet->update($request->except(['_token', 'submit']));
-        return redirect('Package')->with('success', 'Data berhasil diubah!');
+        return redirect('Package')->with('success', 'Package Successfully changed!');
     }
 
     public function destroy($id){
         $packet = packet::find($id);
         $packet->delete();
 
-        return redirect('Package')->with('info', 'Data berhasil dihapus!');
+        // return redirect('Package')->with('info', 'Data berhasil dihapus!');
+        return response()->json(['status' => 'Package Successfully deleted!']);
     }
 }

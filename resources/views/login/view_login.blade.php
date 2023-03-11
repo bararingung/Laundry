@@ -17,7 +17,7 @@
   </head>
   <body>
 
-  <form action="{{ url('login/proses') }}" method="post" class="">
+  <form action="{{ url('login/proses') }}" method="POST" class="">
     @csrf
     <div class="container text-center mt-5">
 
@@ -47,7 +47,7 @@
                   <img src="img/lock.png" alt="password">
                 </span>
                 </div>
-                <button type="submit" class="btn btn-info text-white mb-5 me-3"><h6>Login!</h6></button>
+                <button type="submit" class="btn btn-info text-white mb-5 me-3 form-control fw-bold">Login!</button>
             </div>
             </div>
         </div>

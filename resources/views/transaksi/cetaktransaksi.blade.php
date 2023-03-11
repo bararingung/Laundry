@@ -1,6 +1,3 @@
-
-	
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -153,8 +150,8 @@
 								</td>
 							</tr>
 							<tr>
-								<td> <b>Status cucian :</b> {{ $transaksi->status }} <br>
-								<b>Status pembayaran :</b> {{ $transaksi->status_bayar }} 
+								<td> <b>Laundry Status :</b> {{ $transaksi->status }} <br>
+								<b>Payment Status :</b> {{ $transaksi->status_bayar }} 
 							</td>
 							</tr>
 						</table>
@@ -182,31 +179,31 @@
 				<tr class="item">
 					<td>{{ $transaksi->packets->nama_paket }}</td>
 					<td >{{ $transaksi->qty }}</td>
-					<td>IDR {{ $transaksi->packets->harga }}</td>
+					<td>IDR. {{ $transaksi->packets->harga }}</td>
 				</tr>
 				<tr class="item">
 					<td></td>
-					<td >Biaya tambahan</td>
-					<td>IDR {{ $transaksi->biaya_tambahan }}</td>
+					<td >Additional Cost</td>
+					<td>IDR. {{ $transaksi->biaya_tambahan }}</td>
 				</tr>
 
 				<tr class="item">
 					<td></td>
-					<td>Diskon</td>
+					<td>Discount</td>
 
 					<td>{{ $transaksi->diskon }}%</td>
 				</tr>
 
 				<tr class="item">
 					<td></td>
-					<td>Pajak</td>
+					<td>Tax</td>
 
 					<td>{{ $transaksi->pajak }}%</td>
 				</tr>
 				<tr class="total">
 					<td></td>
 					<td></td>
-					<td>Total: IDR {{ $transaksi->jumlah_harga }}</td>
+					<td>Total: IDR. {{ $transaksi->jumlah_harga }}</td>
 				</tr>
 			</table>
 

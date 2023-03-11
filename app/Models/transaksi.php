@@ -27,6 +27,12 @@ class transaksi extends Model
     public function GetTotalHarga(){
         return $this->packets->harga * $this->qty;
     }
+    public function TotalHargaLaporan(){
+        $total = $this->jumlah_harga;
+        $count = count($total);
+
+        return $count;
+    }
 
     
     

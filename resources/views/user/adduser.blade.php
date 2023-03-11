@@ -14,9 +14,10 @@
     <label for="tlp"></label>Email :<br>
     <input type="email" name="email" id="tlp" placeholder="youremail@gmail.com" required class="form-control mt-3"><br>
     <label for="alamat" class="mb-3"></label>Password :<br>
-    <input type="text" name="password" id="password" class="form-control" placeholder="your password" required mt-3 ><br>
+    <input type="password" name="password" id="password" class="form-control" placeholder="your password" required mt-3 ><br>
     <label for="role">Role :</label>
     <select name="role" id="" class="form-control">
+        <option value="">--Chose Role--</option>
         <option value="1">Admin</option>
         <option value="2">Cashier</option>
         <option value="3">Owner</option>

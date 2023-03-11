@@ -17,7 +17,7 @@
     <textarea name="alamat" id="alamat" required class="form-control" cols="30" rows="10">{{$Registrasi->alamat }}</textarea>
     <label for="Gender"> Gender : </label>
     <select name="jenis_kelamin" id="Gender" class="form-control mb-3" required>
-        <option value="">Gender</option>
+        <option value="">--Chose Gender--</option>
         <option value="M" @if ($Registrasi->jenis_kelamin == "L")
             selected
         @endif>Male</option>

@@ -15,7 +15,7 @@
         <textarea name="alamat" class="form-control mb-2" id="alamat" placeholder="your addres" cols="30" rows="10" required></textarea>
         <label for="Gender">Gender :</label>
         <select name="jenis_kelamin" id="Gender" required class="form-control ">
-            {{-- <option value="">Gender</option> --}}
+            <option value="">--Chose Gender--</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
         </select><br>

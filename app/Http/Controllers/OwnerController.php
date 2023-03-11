@@ -9,7 +9,8 @@ use App\Models\transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class BerandaController extends Controller
+
+class OwnerController extends Controller
 {
     public function index(){
         $member = member::all();

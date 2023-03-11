@@ -9,7 +9,7 @@
         @method('put')
         @csrf
     <label for="nama">Name :</label><br>
-    <input type="text" name="nama" class="form-control" id="nama" placeholder="nama" autofocus  value="{{ $outlet->nama }}" required><br>
+    <input type="text" name="nama" class="form-control" id="nama" placeholder="Outlet name" autofocus  value="{{ $outlet->nama }}" required><br>
     <label for="tlp">Telephone :</label><br>
     <input type="text" name="tlp" class="form-control" id="tlp" placeholder="tlp" autofocus value="{{ $outlet->tlp }}" required><br>
     <label for="alamat">Address :</label><br>

@@ -11,8 +11,15 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class OutletController extends Controller
 {
-    public function index(){
-        $Outlet = Outlet::all();
+    public function index(Request $request){
+        $keyword = $request->get('search');
+
+        $Outlet = Outlet::where('nama', 'LIKE', "%$keyword%")
+                        ->orWhere('alamat', 'LIKE', "%$keyword%")
+                        ->orWhere('tlp', 'LIKE', "%$keyword%")
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(5)->withQueryString();
+        // $Outlet = Outlet::all();
         return view('product.Outlet', compact(['Outlet']));
     }
 

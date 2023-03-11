@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\DB;
 class RegisterController extends Controller
 {
     public function index(Request $request){
-        if ($request->has('search')) {
-            $member = member::where('nama', 'LIKE', '%'.$request->search.'%')->paginate();
-        }else {
-
-            $member = member::all();
-        }
+        $keyword = $request->get('search');
+        $member = member::where('nama', 'LIKE', "%$keyword%")
+                        ->orWhere('alamat', 'LIKE', "%$keyword%")
+                        ->orderBy('created_at', 'desc')
+                        ->paginate(5)->withQueryString();
+        // $member = member::all();
         return view('user.member', compact(['member']));
     }
 

@@ -11,7 +11,10 @@ use App\Http\Controllers\UserdataController;
 use App\Http\Controllers\PackageController;
 use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\CetakController;
+use App\Http\Controllers\KasirController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\OwnerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,9 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/', 'index')->name('login');
     Route::post('login/proses', 'proses');
     Route::get('logout', 'logout')->name('logout');
+});
+
+Route::group(['middleware' => ['auth','cekrole:admin,cashier,owner']], function () {
     Route::resource('beranda', BerandaController::class);
     Route::resource('outlet',OutletController::class);
     Route::resource('Registrasi', RegisterController::class);
@@ -40,6 +46,9 @@ Route::controller(LoginController::class)->group(function(){
     Route::resource('Package', PackageController::class);
     Route::resource('Transaction', TransactionController::class);
     Route::resource('Cetak', CetakController::class);
+    Route::resource('laporan', LaporanController::class);
+    Route::resource('kasir', KasirController::class);
+    Route::resource('owner', OwnerController::class);
 });
 
 ?>
